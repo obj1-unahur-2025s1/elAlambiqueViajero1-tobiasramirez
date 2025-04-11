@@ -1,0 +1,51 @@
+import elAlambiqueViajero.*
+
+
+
+
+test "luke viaja a paris" {
+
+
+  luke.viajar(paris)
+  assert.equals("Llavero Torre Eiffel", luke.recuerdo())
+  assert.equals(1, luke.cantidadViajes())
+}
+
+
+test "luke viaja a bagdad con un recuerdo diferente" {
+bagdad.recuerdo("Armas masivas")
+luke.viajar(bagdad)
+assert.equals("Armas masivas", bagdad.recuerdoTipico())
+
+
+
+}
+
+
+test "luke viaja a las vegas cuando hace homenaje a paris" {
+  lasVegas.homenaje(paris)
+  luke.viajar(paris)
+  assert.equals("Llavero Torre Eiffel" , luke.recuerdo())
+}
+
+
+test "luke viaja y gasta combustible" {
+  luke.viajar(paris)
+  assert.that(alambiqueVeloz.tieneCombustible())
+}
+
+
+test "luke viaja 2 veces a paris, quiere volver a bs as y no puede" {
+
+
+  luke.viajar(paris)
+  luke.viajar(paris)
+  luke.viajar(buenosaires)
+  assert.notEquals("Mate", luke.recuerdo())
+}
+
+test "luke viaja con la antigualla blindada a paris y quiere saber si  luego seguirá siendo rapido" {
+    luke.cambiarVehiculo(antiguallaBlindada)
+    luke.viajar(paris)
+    assert.notThat(antiguallaBlindada.esRapido())
+}
